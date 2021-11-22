@@ -1,0 +1,114 @@
+.panel{
+    background: #E1E1E1 0% 0% no-repeat padding-box;
+    box-shadow: 0px 10px 5px #00000029;
+    border-radius: 10px;
+    opacity: 0.77;
+}
+
+#about_panel{
+    position: fixed;
+    top: 100px;
+    bottom: 100px;
+    max-width: 80%;
+    min-width:50%;
+    left:50%;
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    display:none;
+}
+
+#contents_panel{
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-image: url("../res/Sample_Image.jpg");
+    background-size:cover;
+}
+
+#navigation_panel{
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+#buttons_panel{
+    position: fixed;
+    top: 0px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+}
+
+.button_icon{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 10px 5px #00000029;
+    border-radius: 40px;
+    opacity: 0.69;
+    width: 74px;
+    height: 74px;
+    display: inline-block;
+    margin: 8px 8px 8px 8px;
+}
+
+.nav_panel{
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    width: 40px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: -10px 0px 10px #0000001c;
+    border: 1px solid #707070;
+    opacity: 0.1;
+}
+
+#right_nav_panel{
+    right: 0px;
+}
+
+#left_nav_panel{
+    left: 0px;
+}
+
+#bottom_nav_panel{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    bottom:0px;
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    width:fit-content;
+    height:fit-content;
+}
+
+.nav_ball{
+    margin: 8px 8px 8px 8px;
+    height: 37px;
+    width: 37px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 5px 5px 10px #00000029;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.nav_symbol{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+}
+
+polygon{
+    fill:rgb(0, 0, 0);
+    box-shadow: -10px 0px 10px #00000029;
+    opacity: 0.5;
+}
