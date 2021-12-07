@@ -5,6 +5,28 @@
     opacity: 0.77;
 }
 
+#fade{
+    position: fixed;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    background-color: black;
+    opacity:0.5;
+}
+
+#user_panel{
+    position: fixed;
+    top: 100px;
+    bottom: 100px;
+    max-width: 400px;
+    min-width:300px;
+    left:50%;
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    padding:20px;
+}
+
 #about_panel{
     position: fixed;
     top: 100px;
@@ -14,7 +36,29 @@
     left:50%;
     -ms-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
+    overflow-y:auto;
+    padding:20px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+#about_panel::-webkit-scrollbar{ /* Chrome */
     display:none;
+}
+
+.text_panel{
+    text-align:justify;
+    font: normal normal normal 30px/34px Arial;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+}
+
+.text_title{
+    text-align: center;
+    font: normal normal normal 60px/69px Arial;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
 }
 
 #contents_panel{
