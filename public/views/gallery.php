@@ -53,12 +53,20 @@
     </div>
     <div id="user_panel", class="panel", style="display:initial;">
         <div class="text_title">User</div>
-        <form>
+        <form class="login" action="login" method="POST">
+            <div>
+                <?php if(isset($messages)){
+                    foreach($messages as $message){
+                        echo $message;
+                    }
+                }
+                ?>
+            </div>
             <input name="login_field" type="text" placeholder="Your Email">
             <input name="pass_field" type="password" placeholder="Your Password">
             <div>
-                <button>Sign In</button>
-                <button>Sign Up</button>
+                <button type="submit">Sign In</button>
+                <button type="submit">Sign Up</button>
             </div>
         </form>
     </div>
