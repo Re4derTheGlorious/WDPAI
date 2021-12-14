@@ -1,25 +1,52 @@
 <?php
 
 require_once "AppController.php";
+require_once __DIR__."/../models/Photo.php";
+require_once __DIR__."/../repository/PhotoRepository.php";
+
 
 class UploadController extends AppController
 {
-    const MAX_FILE_SIZE = 1024*1024; //ALSO limited by nginx config
+    const MAX_FILE_SIZE = 1024*1024*1024; //ALSO limited by nginx config
     const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
     const UPLOAD_DIRECTORY = '/../public/res/photos/';
 
     private $message = [];
+    private $rep;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->rep = new PhotoRepository();
+    }
 
     public function uploadPhoto()
     {
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
+
+            //Prepare unique image identifier
+            $image = $_FILES['file']['name'];
+            $dir = dirname(__DIR__).self::UPLOAD_DIRECTORY;
+            while(file_exists($dir.$image)){
+                $image = '_'.$image;
+            }
+
+            //Prepare image name
+            $name =$_POST['name_field'];
+            if(!$name)
+            {
+                $name = $_FILES['file']['name'];
+            }
+            $photo = new Photo($name, $image);
+
             move_uploaded_file(
                 $_FILES['file']['tmp_name'],
-                dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
+                $dir.$image
             );
 
-            // TODO create new project object and save it in database
-            //$project = new Project($_POST['title'], $_POST['description'], $_FILES['file']['name']);
+            //Insert into db
+            $photo = new Photo($name, $image);
+            $this->rep->addPhoto($photo);
         }
         return $this->render('gallery', ['messages' => $this->message]);
     }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <script type="text/javascript" src="./public/js/Navigation.js" defer></script>
+    <script type="text/javascript" src="./public/js/Gallery.js" defer></script>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <title>re4tography</title>
 </head>
