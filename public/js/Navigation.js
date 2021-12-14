@@ -22,9 +22,11 @@ function button_FAV(){
 }
 function button_LEFT(){
     console.log("Click: LEFT");
+    cycle(-1);
 }
 function button_RIGHT(){
     console.log("Click: RIGHT");
+    cycle(1);
 }
 function button_BACK(){
     console.log("Click: BACK");

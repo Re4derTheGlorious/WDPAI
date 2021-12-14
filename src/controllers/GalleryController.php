@@ -5,7 +5,7 @@ require_once __DIR__."/../models/Photo.php";
 require_once __DIR__."/../repository/PhotoRepository.php";
 
 
-class UploadController extends AppController
+class GalleryController extends AppController
 {
     const MAX_FILE_SIZE = 1024*1024*1024; //ALSO limited by nginx config
     const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
@@ -49,6 +49,22 @@ class UploadController extends AppController
             $this->rep->addPhoto($photo);
         }
         return $this->render('gallery', ['messages' => $this->message]);
+    }
+
+    public function fetchPhoto(){
+        $contentType = $_SERVER["CONTENT_TYPE"] ?? '';
+        if($contentType==='application/json'){
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            $nextId = $this->rep->cyclePhotos($decoded['currPos'], $decoded['currAlb'], $decoded['dir']);
+            $nextImage = $this->rep->getPhoto($nextId)->getImage();
+            $response = "{\"path\": \"public/res/photos/$nextImage\"}";
+            echo $response;
+        }
     }
 
     private function validate(array $file): bool
