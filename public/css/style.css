@@ -26,6 +26,17 @@
     transform: translate(-50%, 0);
     padding:20px;
 }
+#upload_panel{
+    position: fixed;
+    top: 100px;
+    bottom: 100px;
+    max-width: 400px;
+    min-width:300px;
+    left:50%;
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    padding:20px;
+}
 
 #about_panel{
     position: fixed;
@@ -73,6 +84,7 @@
 
 #navigation_panel{
     position: fixed;
+    display: contents;
     top: 0px;
     bottom: 0px;
     left: 0px;

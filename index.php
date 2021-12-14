@@ -8,5 +8,6 @@ $path = parse_url( $path, PHP_URL_PATH);
 Router::get('', 'DefaultController');
 Router::get('gallery', 'DefaultController');
 Router::post('login', 'SecurityController');
+Router::post('uploadPhoto', 'UploadController');
 
 Router::run($path);

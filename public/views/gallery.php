@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <head>
+    <script type="text/javascript" src="./public/js/Navigation.js" defer></script>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <title>re4tography</title>
 </head>
 <body>
     <div id="contents_panel"></div>
-    <div id="fade" style="display:none;"></div>
     <div id="buttons_panel">
-        <button class="button_icon" style="display:none;">
+        <button id="share_button" class="button_icon">
             <img src="public/res/icons/Icon_Share.svg">
         </button>
-        <button class="button_icon" style="display:none;">
+        <button id="fav_button" class="button_icon">
             <img src="public/res/icons/Icon_Fav.svg">
         </button>
-        <button class="button_icon">
+        <button id="user_button" class="button_icon">
             <img src="public/res/icons/Icon_User.svg">
         </button>
-        <button class="button_icon">
+        <button id="info_button"  class="button_icon">
             <img src="public/res/icons/Icon_Info.svg">
         </button>
+        <button id="upload_button" class="button_icon">
+            <img src="public/res/icons/Icon_Share.svg">
+        </button>
     </div>
-    <div id="navigation_panel">
+    <div id="fade" style="display:none;"></div>
+    <div id="navigation_panel" style="display:contents;">
         <div id="left_nav_panel" class="nav_panel">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="nav_symbol">
                 <polygon points="0,15 30,30 30,0"/>
@@ -51,7 +55,27 @@
             <p>&emsp;Duis ultrices quam non metus vehicula vulputate. Praesent eget ante sit amet sem ullamcorper pulvinar eget sed arcu. Quisque fringilla vel turpis condimentum hendrerit. Donec vel ligula diam. Aliquam elementum augue massa, at convallis dui dapibus quis. Nam commodo finibus lorem, vitae eleifend nisi. Ut ex dolor, porttitor sed massa sit amet, suscipit mollis mauris.</p>
         </div>
     </div>
-    <div id="user_panel", class="panel", style="display:initial;">
+    <div id="upload_panel" class="panel" style="display:none;">
+        <div class="text_panel">
+            <div class="text_title">New photo</div>
+            <form action="uploadPhoto" method="POST" ENCTYPE="multipart/form-data">
+                <div>
+                    <?php if(isset($messages)){
+                        foreach($messages as $message){
+                            echo $message;
+                        }
+                    }
+                    ?>
+                </div>
+                <input type="text" name="name_field" placeholder="Photo name">
+                <input type="file" name="file">
+                <div>
+                    <button type="submit">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="user_panel", class="panel", style="display:none;">
         <div class="text_title">User</div>
         <form class="login" action="login" method="POST">
             <div>
