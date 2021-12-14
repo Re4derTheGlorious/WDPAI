@@ -37,13 +37,13 @@
             </svg>
         </div>
         <div id="bottom_nav_panel">
-            <span class="nav_ball" style="opacity:0.2; width:15px; height: 15px"></span>
-            <span class="nav_ball" style="opacity:0.4; width:22px; height: 22px"></span>
-            <span class="nav_ball" style="opacity:0.6; width:30px; height: 30px"></span>
-            <span class="nav_ball"></span>
-            <span class="nav_ball" style="opacity:0.6; width:30px; height: 30px"></span>
-            <span class="nav_ball" style="opacity:0.4; width:22px; height: 22px"></span>
-            <span class="nav_ball" style="opacity:0.2; width:15px; height: 15px"></span>
+            <span id="nav_0" class="nav_ball" style="opacity:0.2; width:15px; height: 15px"></span>
+            <span id="nav_1" class="nav_ball" style="opacity:0.4; width:22px; height: 22px"></span>
+            <span id="nav_2" class="nav_ball" style="opacity:0.6; width:30px; height: 30px"></span>
+            <span id="nav_3" class="nav_ball"></span>
+            <span id="nav_4" class="nav_ball" style="opacity:0.6; width:30px; height: 30px"></span>
+            <span id="nav_5" class="nav_ball" style="opacity:0.4; width:22px; height: 22px"></span>
+            <span id="nav_6" class="nav_ball" style="opacity:0.2; width:15px; height: 15px"></span>
         </div>
     </div>
     <div id="about_panel" class="panel" style="display:none;">

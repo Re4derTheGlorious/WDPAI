@@ -7,7 +7,7 @@ require_once __DIR__."/../repository/PhotoRepository.php";
 
 class GalleryController extends AppController
 {
-    const MAX_FILE_SIZE = 1024*1024*1024; //ALSO limited by nginx config
+    const MAX_FILE_SIZE = 8000000 ; //ALSO limited by nginx config
     const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
     const UPLOAD_DIRECTORY = '/../public/res/photos/';
 

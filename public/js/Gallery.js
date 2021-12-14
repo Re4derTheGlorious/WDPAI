@@ -1,6 +1,28 @@
 var currPos = 1;
 var currAlb = 1;
 
+function initGallery(){
+    currPos = Math.floor(Math.random() * 10);
+
+    const data = {
+        currPos: this.currPos,
+        currAlb: this.currAlb,
+        dir: 0
+    };
+
+    fetch("/fetchPhoto",{
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(function (response){
+        return response.json();
+    }).then(function(photo){
+        switchPhoto(photo["path"], currPos);
+    });
+}
+
 function cycle(direction){
     const data = {
         currPos: this.currPos,
@@ -30,3 +52,5 @@ function switchAlbum(newAlb){
     currPos = 0;
     currAlb = newAlb;
 }
+
+initGallery();

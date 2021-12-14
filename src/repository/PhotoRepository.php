@@ -16,7 +16,7 @@ class PhotoRepository extends Repository
         ');
         $stmt->execute([
             $albumId,
-            $position+$direction,
+            abs($position+$direction),
             $albumId
         ]);
 
