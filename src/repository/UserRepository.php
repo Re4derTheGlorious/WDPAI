@@ -73,8 +73,21 @@ class UserRepository extends Repository
         }
     }
 
-    public function getUserAlbumId(int $uid): int
+    public function getUserAlbumId(int $uid): ?int
     {
-        return 2;
+        $stmt = $this->database->connect()->prepare('
+            SELECT "Id" FROM public."Albums" WHERE "OwnerId" = ?;
+        ');
+        $stmt->execute([$uid]);
+
+        $aid = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+        if(!$aid){
+            return null;
+        }
+        else{
+            return $aid['Id'];
+        }
     }
 }

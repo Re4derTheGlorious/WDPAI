@@ -3,10 +3,6 @@ function button_UPLOAD(){
     document.getElementById('fade').style.display = "initial";
     document.getElementById('upload_panel').style.display = "initial";
 }
-function button_SHARE(){
-    console.log("Click: SHARE");
-    alert("Album link copied to clipboard!");
-}
 function button_USER(){
     console.log("Click: USER");
     document.getElementById('fade').style.display = "initial";
@@ -53,7 +49,6 @@ function button_BACK(){
 document.getElementById('upload_button').addEventListener("click", button_UPLOAD);
 document.getElementById('info_button').addEventListener("click", button_INFO);
 document.getElementById('user_button').addEventListener("click", button_USER);
-document.getElementById('share_button').addEventListener("click", button_SHARE);
 document.getElementById('left_nav_panel').addEventListener("click", button_LEFT);
 document.getElementById('right_nav_panel').addEventListener("click", button_RIGHT);
 document.getElementById('fade').addEventListener("click", button_BACK);

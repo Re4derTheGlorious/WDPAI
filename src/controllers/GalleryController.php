@@ -110,6 +110,23 @@ class GalleryController extends AppController
         }
     }
 
+    public function getAlbum(){
+        $contentType = $_SERVER["CONTENT_TYPE"] ?? '';
+        if($contentType==='application/json'){
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            $uid = $this->srep->getUserId($decoded['token']);
+            $aid = $this->urep->getUserAlbumId($uid);
+
+            $response = "{\"message\": \"$aid\"}";
+            echo $response;
+        }
+    }
+
     private function validate(array $file): bool
     {
         if ($file['size'] > self::MAX_FILE_SIZE) {

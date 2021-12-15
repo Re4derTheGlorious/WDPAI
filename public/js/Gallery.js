@@ -35,6 +35,11 @@ function likePhoto(){
 function initGallery(){
     currPos = Math.floor(Math.random() * 10);
 
+    if(getParam('currAlb')){
+        switchAlbum(getParam('currAlb'));
+    }
+
+
     const data = {
         token: getSession(),
         currPos: this.currPos,
@@ -92,5 +97,50 @@ function refreshAlbumUI(faved){
     document.getElementById("fav_icon").style.display=(faved==1)?'none':'initial';
 }
 
+function getLink(){
+    console.log("Click_SHARE");
+
+    const data = {
+        token: getSession()
+    };
+
+    fetch("/getAlbum",{
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(function (response){
+        return response.json();
+    }).then(function(response){
+        var url = window.location.href.split('?')[0]+'?currAlb='+response["message"];
+
+        setClipboard(url);
+    });
+}
+
+function setClipboard(text) {
+    var type = "text/plain";
+    var blob = new Blob([text], { type });
+    var data = [new ClipboardItem({ [type]: blob })];
+
+    navigator.clipboard.write(data).then(
+        function () {
+            alert('Album link copied to clipboard!');
+        },
+        function () {
+            alert('Cannot copy. Browser not supported?');
+        }
+    );
+}
+
+
+function getParam(param){
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
 document.getElementById('fav_button').addEventListener("click", likePhoto);
+document.getElementById('share_button').addEventListener("click", getLink);
+
 initGallery();
