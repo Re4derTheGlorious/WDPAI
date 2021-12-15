@@ -61,10 +61,11 @@
         <div class="text_panel">
             <div class="text_title">New photo</div>
             <form action="uploadPhoto" method="POST" ENCTYPE="multipart/form-data">
-                <input type="text" name="name_field" placeholder="Photo name">
+                <input type="text" id='name_field' name="name_field" placeholder="Photo name">
                 <input type="file" name="file">
+                <input type="text" id='token_field' name="token_field" style="display:none;">
                 <div>
-                    <button type="submit">Upload</button>
+                    <button id="upload_button" type="submit">Upload</button>
                 </div>
             </form>
         </div>

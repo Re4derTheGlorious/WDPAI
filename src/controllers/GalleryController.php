@@ -3,6 +3,9 @@
 require_once "AppController.php";
 require_once __DIR__."/../models/Photo.php";
 require_once __DIR__."/../repository/PhotoRepository.php";
+require_once __DIR__."/../repository/UserRepository.php";
+require_once __DIR__."/../repository/SessionRepository.php";
+
 
 
 class GalleryController extends AppController
@@ -13,16 +16,33 @@ class GalleryController extends AppController
 
     private $message = [];
     private $rep;
+    private $srep;
+    private $urep;
 
     public function __construct()
     {
         parent::__construct();
         $this->rep = new PhotoRepository();
+        $this->srep = new SessionRepository();
+        $this->urep = new UserRepository();
     }
 
     public function uploadPhoto()
     {
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
+            //auth user
+            $token = $_POST['token_field'];
+            if(!$token || strlen($token)==0){
+                return $this->render('gallery', ['messages' => $this->message]);
+            }
+            else if(!($this->srep->checkToken($token))){
+                return $this->render('gallery', ['messages' => $this->message]);
+            }
+
+            $perm = $this->urep->getUserPermissions($this->srep->getUserId($token));
+            if(!$perm->getUpload()){
+                return $this->render('gallery', ['messages' => $this->message]);
+            }
 
             //Prepare unique image identifier
             $image = $_FILES['file']['name'];

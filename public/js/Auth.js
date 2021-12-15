@@ -2,6 +2,8 @@ let permissions = [false, false, false, false];
 let status = true;
 
 function refresh(permString){
+    saveSession(getSession());
+
     permissions[0] = permString[0]>0?true:false;
     permissions[1] = permString[1]>0?true:false;
     permissions[2] = permString[2]>0?true:false;
@@ -140,6 +142,7 @@ function check(){
 
 function saveSession(token){
     window.localStorage.setItem('token', token);
+    document.getElementById('token_field').value = token;
 }
 
 function getSession(){
