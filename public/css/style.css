@@ -17,13 +17,12 @@
 
 #user_panel{
     position: fixed;
-    top: 100px;
-    bottom: 100px;
     max-width: 400px;
     min-width:300px;
     left:50%;
-    -ms-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);
+    top:50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     padding:20px;
 }
 #upload_panel{
@@ -98,6 +97,11 @@
     align-items: center;
     width: fit-content;
     height: fit-content;
+}
+
+#login_buttons{
+    text-align: center;
+    padding-top:20px;
 }
 
 .button_icon{

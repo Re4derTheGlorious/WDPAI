@@ -1,4 +1,5 @@
 let permissions = [false, false, false, false];
+let status = true;
 
 function refresh(permString){
     permissions[0] = permString[0]>0?true:false;
@@ -6,15 +7,28 @@ function refresh(permString){
     permissions[2] = permString[2]>0?true:false;
     permissions[3] = permString[3]>0?true:false;
 
-    document.getElementById('upload_button').style.visibility = permissions[0]==true?'initial':'hidden';
-    //document.getElementById('remove_button').style.visibility = permissions[1]==true?'initial':'hidden';
-    document.getElementById('fav_button').style.visibility = permissions[2]==true?'initial':'hidden';
-    document.getElementById('share_button').style.visibility = permissions[3]==true?'initial':'hidden';
+    //login form
+    document.getElementById('login_button').style.display = getSession().length>0?'none':'initial';
+    document.getElementById('register_button').style.display = getSession().length>0?'none':'initial';
+    document.getElementById('logoff_button').style.display = getSession().length>0?'initial':'none';
+    document.getElementById('login_field').disabled = getSession().length>0?true:false;
+    document.getElementById('login_field').value = '';
+    document.getElementById('pass_field').disabled = getSession().length>0?true:false;
+    document.getElementById('login_field').value = '';
+
+
+
+    //buttons
+    document.getElementById('upload_button').style.display = permissions[0]==true?'initial':'none';
+    //document.getElementById('remove_button').style.display = permissions[1]==true?'initial':'none';
+    document.getElementById('fav_button').style.display = permissions[2]==true?'initial':'none';
+    document.getElementById('share_button').style.display = permissions[3]==true?'initial':'none';
 }
 
 function sign_up(){
     console.log("Click: SIGN_UP")
 
+    status = true;
     const email = document.getElementById('login_field').value;
     const pass = document.getElementById('pass_field').value;
 
@@ -35,26 +49,31 @@ function sign_up(){
         body: JSON.stringify(data)
     }).then(function (response){
         if(!response.ok){
-            alert(response["message"]);
-            return null;
+            status = false;
         }
         return response.json();
     }).then(function(response){
-        if(response){
+        if(status){
             saveSession(response['message']);
             refresh(response['perm']);
+        }
+        else{
+            alert(response['message']);
         }
     });
 }
 
 function log_off(){
+    console.log('Click: LOG_OFF');
     saveSession('');
     refresh('0000');
+    alert("Logged off!");
 }
 
 function sign_in(){
     console.log("Click: SIGN_IN")
 
+    status = true;
     const email = document.getElementById('login_field').value;
     const pass = document.getElementById('pass_field').value;
 
@@ -75,14 +94,16 @@ function sign_in(){
         body: JSON.stringify(data)
     }).then(function (response){
         if(!response.ok){
-            alert(response["message"]);
-            return null;
+            status = false;
         }
         return response.json();
     }).then(function(response){
-        if(response){
+        if(status){
             saveSession(response['message']);
             refresh(response['perm']);
+        }
+        else{
+            alert(response['message']);
         }
     });
 }
@@ -122,7 +143,8 @@ function saveSession(token){
 }
 
 function getSession(){
-    return window.localStorage.getItem('token');
+    const token = window.localStorage.getItem('token');
+    return token!=null?token:'';
 }
 
 function validate(email, pass){

@@ -9,6 +9,9 @@
 <body>
     <div id="contents_panel"></div>
     <div id="buttons_panel">
+        <button id="upload_button" class="button_icon">
+            <img src="public/res/icons/Icon_Share.svg">
+        </button>
         <button id="share_button" class="button_icon">
             <img src="public/res/icons/Icon_Share.svg">
         </button>
@@ -20,9 +23,6 @@
         </button>
         <button id="info_button"  class="button_icon">
             <img src="public/res/icons/Icon_Info.svg">
-        </button>
-        <button id="upload_button" class="button_icon">
-            <img src="public/res/icons/Icon_Share.svg">
         </button>
     </div>
     <div id="fade" style="display:none;"></div>
@@ -74,7 +74,7 @@
         <div>
             <input id='login_field' name="login_field" type="text" placeholder="Your Email">
             <input input id='pass_field' name="pass_field" type="password" placeholder="Your Password">
-            <div>
+            <div id="login_buttons">
                 <button id='login_button'>Sign In</button>
                 <button id="register_button">Sign Up</button>
                 <button id="logoff_button">Log Off</button>
