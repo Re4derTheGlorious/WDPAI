@@ -5,6 +5,28 @@ require_once __DIR__.'/../models/Photo.php';
 
 class PhotoRepository extends Repository
 {
+    public function isInFavs(int $uid, int $pid):bool
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT COUNT(*)>0 AS "Result" FROM "AlbumPhotos" ap
+            JOIN "Albums" al ON al."Id"=ap."AlbumId"
+            WHERE al."OwnerId"=? AND ap."PhotoId"=?;
+        ');
+        $stmt->execute([$uid, $pid]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC)["Result"];
+    }
+
+    public function fav(int $uid, int $pid): bool
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM favourite(?, ?);
+        ');
+        $stmt->execute([$uid, $pid]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC)["favourite"];
+    }
+
     public function cyclePhotos(int $position, int $albumId, int $direction): ?int
     {
         $stmt = $this->database->connect()->prepare('

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <head>
+    <script type="text/javascript" src="./public/js/Auth.js" defer></script>
     <script type="text/javascript" src="./public/js/Navigation.js" defer></script>
     <script type="text/javascript" src="./public/js/Gallery.js" defer></script>
-    <script type="text/javascript" src="./public/js/Auth.js" defer></script>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <title>re4tography</title>
 </head>
@@ -16,7 +16,7 @@
             <img src="public/res/icons/Icon_Share.svg">
         </button>
         <button id="fav_button" class="button_icon">
-            <img src="public/res/icons/Icon_Fav.svg">
+            <img id="fav_icon" src="public/res/icons/Icon_Fav.svg">
         </button>
         <button id="user_button" class="button_icon">
             <img src="public/res/icons/Icon_User.svg">

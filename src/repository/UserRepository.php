@@ -72,4 +72,9 @@ class UserRepository extends Repository
             return new Permissions($perm['Upload'], $perm['Remove'], $perm['Fav'], $perm['Share']);
         }
     }
+
+    public function getUserAlbumId(int $uid): int
+    {
+        return 2;
+    }
 }

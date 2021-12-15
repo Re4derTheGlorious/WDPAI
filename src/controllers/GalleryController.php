@@ -80,9 +80,32 @@ class GalleryController extends AppController
             header('Content-type: application/json');
             http_response_code(200);
 
+            $uid = $this->srep->getUserId($decoded['token']);
             $nextId = $this->rep->cyclePhotos($decoded['currPos'], $decoded['currAlb'], $decoded['dir']);
             $nextImage = $this->rep->getPhoto($nextId)->getImage();
-            $response = "{\"path\": \"public/res/photos/$nextImage\"}";
+            $faved = ($this->rep->isInFavs($uid, $nextId))?1:0;
+            $response = "{\"path\": \"public/res/photos/$nextImage\", \"faved\": $faved}";
+            echo $response;
+        }
+    }
+
+    public function likePhoto(){
+        $contentType = $_SERVER["CONTENT_TYPE"] ?? '';
+        if($contentType==='application/json'){
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            $uid = $this->srep->getUserId($decoded['token']);
+            $aid = $decoded['currAlb'];
+            $pid = $this->rep->cyclePhotos($decoded['currPos'], $aid, 0);
+
+            $res = $this->rep->fav($uid, $pid)>0?1:0;
+
+            $pos = $decoded['currPos'];
+            $response = "{\"message\": \"$res\", \"pos\": \"$pos\"}";
             echo $response;
         }
     }

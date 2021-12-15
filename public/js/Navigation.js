@@ -17,9 +17,6 @@ function button_INFO(){
     document.getElementById('fade').style.display = "initial";
     document.getElementById('about_panel').style.display = "initial";
 }
-function button_FAV(){
-    console.log("Click: FAV");
-}
 function button_LEFT(){
     console.log("Click: LEFT");
     cycle(-1);
@@ -56,7 +53,6 @@ function button_BACK(){
 document.getElementById('upload_button').addEventListener("click", button_UPLOAD);
 document.getElementById('info_button').addEventListener("click", button_INFO);
 document.getElementById('user_button').addEventListener("click", button_USER);
-document.getElementById('fav_button').addEventListener("click", button_FAV);
 document.getElementById('share_button').addEventListener("click", button_SHARE);
 document.getElementById('left_nav_panel').addEventListener("click", button_LEFT);
 document.getElementById('right_nav_panel').addEventListener("click", button_RIGHT);

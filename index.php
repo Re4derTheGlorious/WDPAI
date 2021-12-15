@@ -12,5 +12,7 @@ Router::post('signUp', 'SecurityController');
 Router::post('checkSession', 'SecurityController');
 Router::post('uploadPhoto', 'GalleryController');
 Router::post('fetchPhoto', 'GalleryController');
+Router::post('likePhoto', 'GalleryController');
+
 
 Router::run($path);
