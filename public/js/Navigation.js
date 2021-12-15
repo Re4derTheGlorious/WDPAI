@@ -32,7 +32,6 @@ function button_LEFT3(){
     console.log("Click: LEFT");
     cycle(-3);
 }
-
 function button_RIGHT(){
     console.log("Click: RIGHT");
     cycle(1);
@@ -45,7 +44,6 @@ function button_RIGHT3(){
     console.log("Click: RIGHT");
     cycle(3);
 }
-
 function button_BACK(){
     console.log("Click: BACK");
 

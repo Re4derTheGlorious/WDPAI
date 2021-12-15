@@ -2,6 +2,7 @@
 <head>
     <script type="text/javascript" src="./public/js/Navigation.js" defer></script>
     <script type="text/javascript" src="./public/js/Gallery.js" defer></script>
+    <script type="text/javascript" src="./public/js/Auth.js" defer></script>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <title>re4tography</title>
 </head>
@@ -60,14 +61,6 @@
         <div class="text_panel">
             <div class="text_title">New photo</div>
             <form action="uploadPhoto" method="POST" ENCTYPE="multipart/form-data">
-                <div>
-                    <?php if(isset($messages)){
-                        foreach($messages as $message){
-                            echo $message;
-                        }
-                    }
-                    ?>
-                </div>
                 <input type="text" name="name_field" placeholder="Photo name">
                 <input type="file" name="file">
                 <div>
@@ -78,21 +71,14 @@
     </div>
     <div id="user_panel", class="panel", style="display:none;">
         <div class="text_title">User</div>
-        <form class="login" action="login" method="POST">
+        <div>
+            <input id='login_field' name="login_field" type="text" placeholder="Your Email">
+            <input input id='pass_field' name="pass_field" type="password" placeholder="Your Password">
             <div>
-                <?php if(isset($messages)){
-                    foreach($messages as $message){
-                        echo $message;
-                    }
-                }
-                ?>
+                <button id='login_button'>Sign In</button>
+                <button id="register_button">Sign Up</button>
+                <button id="logoff_button">Log Off</button>
             </div>
-            <input name="login_field" type="text" placeholder="Your Email">
-            <input name="pass_field" type="password" placeholder="Your Password">
-            <div>
-                <button type="submit">Sign In</button>
-                <button type="submit">Sign Up</button>
-            </div>
-        </form>
+        </div>
     </div>
 </body>
