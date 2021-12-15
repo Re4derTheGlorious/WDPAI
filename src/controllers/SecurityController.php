@@ -25,12 +25,12 @@ class SecurityController extends AppController {
 
             header('Content-type: application/json');
 
-            $password = $decoded['pass'];
+            $pass_hash = md5($decoded['pass']);
             $email = $decoded['email'];
             $perm = '0000';
             $message = '';
 
-            if(!$email || !$password){
+            if(!$email || !$decoded['pass'] || !$pass_hash){
                 $message = "Invalid data received!";
                 http_response_code(418);
             }
@@ -40,7 +40,7 @@ class SecurityController extends AppController {
             }
             else{
                 //Insert new user
-                $this->urep->insertUser($email, $password);
+                $this->urep->insertUser($email, $pass_hash);
 
                 //Insert new session
                 $token = $this->genToken();
@@ -67,7 +67,7 @@ class SecurityController extends AppController {
 
             header('Content-type: application/json');
 
-            $password = $decoded['pass'];
+            $pass_hash = md5($decoded['pass']);
             $email = $decoded['email'];
             $user = $this->urep->getUser($email);
             $message = '';
@@ -77,7 +77,7 @@ class SecurityController extends AppController {
                 $message = "User does not exist";
                 http_response_code(418);
             }
-            else if ($user->getPassword() !== $password) {
+            else if ($user->getPassword() !== $pass_hash) {
                 $message = "Password incorrect";
                 http_response_code(418);
             }
