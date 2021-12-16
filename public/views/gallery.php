@@ -58,6 +58,17 @@
         </div>
     </div>
     <div id="upload_panel" class="panel" style="display:none;">
+        <div class="messages">
+            <?php
+            if(isset($messages)){
+                foreach($messages as $message) {
+                    echo '<script type="text/javascript">
+                        alert(\''.$message.'\');
+                        </script>';
+                }
+            }
+            ?>
+        </div>
         <div class="text_panel">
             <div class="text_title">New photo</div>
             <form action="uploadPhoto" method="POST" ENCTYPE="multipart/form-data">

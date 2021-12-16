@@ -58,11 +58,14 @@ function sign_up(){
         if(status){
             saveSession(response['message']);
             refresh(response['perm']);
+            cycle(0);
         }
         else{
             alert(response['message']);
         }
     });
+
+    cycle(0);
 }
 
 function log_off(){
@@ -103,6 +106,7 @@ function sign_in(){
         if(status){
             saveSession(response['message']);
             refresh(response['perm']);
+            cycle(0);
         }
         else{
             alert(response['message']);
@@ -112,32 +116,29 @@ function sign_in(){
 
 function check(){
     const savedToken = getSession();
-    if(savedToken && savedToken.length>0){
+    if (savedToken && savedToken.length > 0) {
         const data = {
             token: savedToken
         };
 
-        fetch("/checkSession",{
+        fetch("/checkSession", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
-        }).then(function (response){
-            if(!response.ok){
+        }).then(function (response) {
+            if (!response.ok) {
                 saveSession('');
                 return null;
             }
             return response.json();
-        }).then(function(response){
-            if(response){
+        }).then(function (response) {
+            if (response) {
                 refresh(response["message"]);
             }
         });
     }
-
-
-
 }
 
 function saveSession(token){

@@ -1,7 +1,6 @@
 var currPos = 1;
 var currAlb = 1;
 
-
 function likePhoto(){
     console.log("Click: FAV");
     const data = {
@@ -32,6 +31,7 @@ function initGallery(){
 
     if(getParam('currAlb')){
         switchAlbum(getParam('currAlb'));
+        document.getElementById('upload_button').style.display = 'none';
     }
 
 
