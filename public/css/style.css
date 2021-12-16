@@ -170,3 +170,17 @@ polygon{
     box-shadow: -10px 0px 10px #00000029;
     opacity: 0.5;
 }
+
+#fav_icon{
+    height: 40px;
+    margin-top: 6px;
+}
+
+#share_icon{
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+#upload_icon{
+    height: 50px;
+}

@@ -24,12 +24,7 @@ function likePhoto(){
         }
     });
 
-    if(document.getElementById("fav_icon").style.display=='initial'){
-        document.getElementById("fav_icon").style.display='none';
-    }
-    else{
-        document.getElementById("fav_icon").style.display='initial';
-    }
+    refreshAlbumUI(document.getElementById("fav_icon").src.endsWith('public/res/icons/Icon_Fav.svg'));
 }
 
 function initGallery(){
@@ -94,7 +89,9 @@ function switchAlbum(newAlb){
 }
 
 function refreshAlbumUI(faved){
-    document.getElementById("fav_icon").style.display=(faved==1)?'none':'initial';
+    document.getElementById("fav_icon").src=(faved==1)?
+        'public/res/icons/Icon_Faved.svg':
+        'public/res/icons/Icon_Fav.svg';
 }
 
 function getLink(){

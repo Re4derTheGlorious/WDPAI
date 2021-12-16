@@ -10,13 +10,13 @@
     <div id="contents_panel"></div>
     <div id="buttons_panel">
         <button id="upload_button" class="button_icon">
-            <img src="public/res/icons/Icon_Share.svg">
+            <img id="upload_icon" src="public/res/icons/Icon_Upload.svg">
         </button>
         <button id="share_button" class="button_icon">
-            <img src="public/res/icons/Icon_Share.svg">
+            <img id="share_icon" src="public/res/icons/Icon_Share.svg">
         </button>
         <button id="fav_button" class="button_icon">
-            <img id="fav_icon" src="public/res/icons/Icon_Fav.svg">
+            <img id="fav_icon" src="public/res/icons/Icon_Faved.svg">
         </button>
         <button id="user_button" class="button_icon">
             <img src="public/res/icons/Icon_User.svg">
